@@ -1,0 +1,135 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.acme.architecture.aws.sqs</groupId>
+	<artifactId>architecture-aws-sqs</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<java.version>1.8</java.version>
+		
+		<spring.version>4.3.13.RELEASE</spring.version>
+		
+		<maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+	</properties>
+
+	<dependencies>
+	
+		<!-- *** Architecture Libraries *** -->
+
+		<!-- Modules -->
+
+		<dependency>
+			<groupId>com.acme.architecture.common</groupId>
+			<artifactId>architecture-common</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.acme.architecture.testing</groupId>
+			<artifactId>architecture-testing</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- *** Third Party Libraries *** -->
+		
+		<!-- spring : application development framework * 
+				spring-context use : spring-bean, spring-core, spring-aop, spring-expression, aopalliance-1.0, commons-logging-1.2 
+		-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		
+		<dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+		
+		<dependency>
+			<groupId>io.advantageous.boon</groupId>
+			<artifactId>boon-util</artifactId>
+			<version>0.6.6</version>
+		</dependency>
+		
+        <!-- aws-java-sdk : provides Java APIs for building software on AWS -->
+        <dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>aws-java-sdk</artifactId>
+            <version>1.11.414</version>
+        </dependency>
+        
+        <!-- amazon-sqs-java-messaging-lib : provides Java APIs for building software on AWS -->
+		<dependency>
+            <groupId>com.amazonaws</groupId>
+            <artifactId>amazon-sqs-java-messaging-lib</artifactId>
+            <version>1.0.4</version>
+        </dependency>
+        
+        <dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-aws-messaging</artifactId>
+		    <version>2.0.0.RELEASE</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<finalName>acme-architecture-amazon-sqs</finalName>
+		
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		
+		<plugins>
+
+			<!-- Plugin used to compile the project source -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven-compiler-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<target>${java.version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<!-- Plugin used to handle the project resources -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven-resources-plugin.version}</version>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>
